@@ -7,6 +7,8 @@ const authMiddleware = require('../middleware/auth.middleware');
 // Public routes
 router.post('/register', authMiddleware.isNotAuthenticated, authController.register);
 router.post('/login', authMiddleware.isNotAuthenticated, authController.login);
+router.post('/forgot-password', authMiddleware.isNotAuthenticated, authController.forgot_password);
+router.post('/reset-password', authMiddleware.isNotAuthenticated, authController.reset_password);
 
 // Protected routes
 router.post('/logout', authMiddleware.isAuthenticated, authController.logout);
