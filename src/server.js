@@ -30,7 +30,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV === 'production',
+      // secure: process.env.NODE_ENV === 'production',
       // maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }
   })
@@ -42,8 +42,8 @@ app.use(passport.session());
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/students', studentRoutes);
-app.use('/api/payment', paymentRoutes);
+// app.use('/api/students', studentRoutes);
+// app.use('/api/payment', paymentRoutes);
 
 // Basic error handling
 app.use((err, req, res, next) => {
@@ -52,11 +52,7 @@ app.use((err, req, res, next) => {
 });
 
 // create server
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
-});
+const server = http.createServer(app);
 
 // Start server
 server.listen(PORT, hostname, () => {
